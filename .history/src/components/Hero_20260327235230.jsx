@@ -43,25 +43,29 @@ const Hero = () => {
 
         {/* Subtitle */}
         {/* Subtopics */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-gray-400 text-xl sm:text-2xl mb-4"
-        >
-          Founder of <span className="text-white font-medium">MediaConnectStudios</span> · Building <span className="text-primary-400 font-medium">ClientIn</span>
-        </motion.p>
-
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex items-center justify-center mb-12"
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-4"
         >
-          <span className="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-gray-400 text-sm">
-            Final-year Computer Science student at TU Dublin.
+          <span className="px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-gray-400 text-sm">
+            Founder of <span className="text-white font-medium">MediaConnectStudios</span>
+          </span>
+          <span className="hidden sm:block text-gray-600">·</span>
+          <span className="px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-gray-400 text-sm">
+            Building <span className="text-primary-400 font-medium">ClientIn</span>
           </span>
         </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto"
+        >
+          Final-year <span className="text-white font-semibold">Computer Science student</span> at TU Dublin.
+        </motion.p>
 
         {/* CTA Buttons */}
         <motion.div
