@@ -8,7 +8,7 @@ const About = () => {
     {
       icon: Code2,
       title: 'Full-Stack Development',
-      description: 'React, React Native, Node.js, Express — shipping features end-to-end',
+      description: 'React, React Native, Node.js, Express, shipping features end-to-end',
     },
     {
       icon: Rocket,
@@ -67,7 +67,7 @@ const About = () => {
           >
             <div className="space-y-6">
               <p className="text-gray-300 text-base leading-relaxed">
-                I'm <span className="text-white font-semibold">Daniel Sofola</span>, a final-year BSc Computer Science student at <span className="text-primary-400 font-semibold">Technological University Dublin</span>, on track for First-Class Honours (Graduation: 2026).
+                I'm <span className="text-white font-semibold">Daniel Sofola</span>, a final-year BSc Computer Science student at <span className="text-primary-400 font-semibold">Technological University Dublin</span>, on track for First-Class Honours (Graduation: 2026). My relevant modules include Data Analytics, UX Design, and Business Strategy.
               </p>
               <p className="text-gray-300 text-base leading-relaxed">
                 I'm the founder of <span className="text-primary-400 font-semibold">ClientIn</span> — a loyalty and CRM platform built for service-based businesses. I'm working directly with businesses to understand retention challenges, managing product direction, feature prioritisation, and securing early adoption pre-launch.

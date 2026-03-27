@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Clock, ArrowLeft, ArrowRight, ArrowRight as ChevronRight } from 'lucide-react';
+import { Calendar, Clock, ArrowLeft, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { blogPosts } from './blogData';
 
-// Top 3 featured posts shown on the homepage (MCS origin, ClientIn story, BP Vital specialist story)
-const featuredPosts = [8, 2, 7].map(id => blogPosts.find(p => p.id === id)).filter(Boolean);
-
-const Blog = () => {
+const AllBlogs = () => {
+	const [activeCategory, setActiveCategory] = useState('all');
 	const [selectedPost, setSelectedPost] = useState(null);
 	const navigate = useNavigate();
+
+	const categories = ['all', 'Product', 'Startups', 'Learning', 'Engineering'];
+
+	const filteredPosts = blogPosts.filter((post) => {
+		const matchesCategory = activeCategory === 'all' || post.category === activeCategory;
+		return matchesCategory;
+	});
 
 	// Single post view
 	if (selectedPost) {
@@ -18,9 +23,8 @@ const Blog = () => {
 		const nextPost = blogPosts[currentIndex + 1];
 
 		return (
-			<div className="py-20 px-4 sm:px-6 lg:px-8">
+			<div className="py-20 px-4 sm:px-6 lg:px-8 min-h-screen">
 				<div className="max-w-3xl mx-auto">
-					{/* Back Button */}
 					<button
 						onClick={() => setSelectedPost(null)}
 						className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors duration-200 mb-10 group"
@@ -29,7 +33,6 @@ const Blog = () => {
 						Back to Blog
 					</button>
 
-					{/* Post Header */}
 					<motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
 						<span className="inline-block px-3 py-1 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-300 text-xs mb-4">
 							{selectedPost.category}
@@ -75,7 +78,6 @@ const Blog = () => {
 						</div>
 					</motion.div>
 
-					{/* Prev / Next Navigation */}
 					<div className="flex justify-between items-center mt-16 pt-8 border-t border-white/10">
 						{prevPost ? (
 							<button
@@ -102,47 +104,58 @@ const Blog = () => {
 	}
 
 	return (
-		<section id="blog" className="py-20 px-4 sm:px-6 lg:px-8">
+		<section className="py-20 px-4 sm:px-6 lg:px-8 min-h-screen">
 			<div className="max-w-7xl mx-auto">
+				{/* Back to Home */}
+				<button
+					onClick={() => { navigate('/'); setTimeout(() => { document.getElementById('blog')?.scrollIntoView({ behavior: 'smooth' }); }, 100); }}
+					className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors duration-200 mb-10 group"
+				>
+					<ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform duration-200" />
+					Back to Home
+				</button>
+
 				{/* Header */}
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					viewport={{ once: true }}
+					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.6 }}
-					className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16"
+					className="mb-16"
 				>
-					<div>
-						<p className="text-primary-400 text-sm font-semibold uppercase tracking-wider mb-4">BLOG</p>
-						<h2 className="text-3xl md:text-5xl font-bold mb-4">
-							Thoughts & <span className="gradient-text">Lessons</span>
-						</h2>
-						<p className="text-gray-400 max-w-2xl">
-							Writing about building products, learning software, and the journey from content agency to founder.
-						</p>
-					</div>
-					<motion.button
-						initial={{ opacity: 0, x: 20 }}
-						whileInView={{ opacity: 1, x: 0 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.6, delay: 0.2 }}
-						onClick={() => { navigate('/blog'); window.scrollTo(0, 0); }}
-						className="flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-gray-300 hover:border-primary-500 hover:text-white hover:bg-primary-500/10 transition-all duration-300 whitespace-nowrap group"
-					>
-						View All Posts
-						<ChevronRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
-					</motion.button>
+					<p className="text-primary-400 text-sm font-semibold uppercase tracking-wider mb-4">BLOG</p>
+					<h2 className="text-3xl md:text-5xl font-bold mb-4">
+						Thoughts & <span className="gradient-text">Lessons</span>
+					</h2>
+					<p className="text-gray-400 max-w-2xl mb-8">
+						Writing about building products, learning software, and the journey from content agency to founder.
+					</p>
 				</motion.div>
 
-				{/* Featured 3 Posts */}
+				{/* Filters */}
+				<div className="mb-12 flex flex-wrap gap-3">
+					{categories.map((category) => (
+						<button
+							key={category}
+							onClick={() => setActiveCategory(category)}
+							className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+								activeCategory === category
+									? 'bg-primary-500 text-white'
+									: 'border border-white/20 text-gray-300 hover:border-primary-500 hover:text-white'
+							}`}
+						>
+							{category}
+						</button>
+					))}
+				</div>
+
+				{/* Blog Grid */}
 				<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-					{featuredPosts.map((post, index) => (
+					{filteredPosts.map((post, index) => (
 						<motion.article
 							key={post.id}
 							initial={{ opacity: 0, y: 20 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true }}
-							transition={{ duration: 0.5, delay: index * 0.1 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.5, delay: index * 0.08 }}
 							onClick={() => setSelectedPost(post)}
 							className="group relative glass-effect rounded-2xl overflow-hidden hover:bg-white/10 transition-all duration-300 cursor-pointer"
 						>
@@ -171,25 +184,14 @@ const Blog = () => {
 					))}
 				</div>
 
-				{/* View All CTA */}
-				<motion.div
-					initial={{ opacity: 0, y: 10 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					viewport={{ once: true }}
-					transition={{ duration: 0.5, delay: 0.4 }}
-					className="text-center mt-12"
-				>
-					<button
-						onClick={() => navigate('/blog')}
-						className="btn-primary inline-flex items-center gap-2 group"
-					>
-						View All {blogPosts.length} Posts
-						<ChevronRight size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
-					</button>
-				</motion.div>
+				{filteredPosts.length === 0 && (
+					<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-12">
+						<p className="text-gray-400 text-lg">No posts found matching your search.</p>
+					</motion.div>
+				)}
 			</div>
 		</section>
 	);
 };
 
-export default Blog;
+export default AllBlogs;

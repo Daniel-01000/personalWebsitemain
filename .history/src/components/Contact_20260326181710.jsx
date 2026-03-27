@@ -116,10 +116,7 @@ const Contact = () => {
               <p className="text-gray-400 text-sm flex items-center gap-2">
                 © {new Date().getFullYear()} Made with <Heart size={14} className="text-red-500 fill-red-500" /> by Daniel Sofola
               </p>
-              <div className="flex gap-8">
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300 text-sm">Privacy</a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300 text-sm">Terms</a>
-              </div>
+
             </div>
           </div>
         </motion.div>
