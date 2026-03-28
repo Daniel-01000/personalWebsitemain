@@ -58,7 +58,7 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="flex items-center justify-center mb-12"
         >
-          <span className="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-gray-400 text-xs sm:text-sm text-center">
+          <span className="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-gray-400 text-sm">
             Final-year Computer Science student at TU Dublin.
           </span>
         </motion.div>

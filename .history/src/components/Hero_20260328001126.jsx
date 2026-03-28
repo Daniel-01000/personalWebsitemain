@@ -19,7 +19,7 @@ const Hero = () => {
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto text-center w-full">
+      <div className="relative z-10 max-w-4xl mx-auto text-center">
         {/* Availability Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -36,7 +36,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 break-words"
+          className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6"
         >
           Hi, I'm <span className="gradient-text">Daniel Sofola</span>
         </motion.h1>
@@ -47,7 +47,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-gray-400 text-lg sm:text-2xl mb-4 leading-relaxed"
+          className="text-gray-400 text-xl sm:text-2xl mb-4"
         >
           Founder of <span className="text-white font-medium">MediaConnectStudios</span> · Building <span className="text-primary-400 font-medium">ClientIn</span>
         </motion.p>
@@ -58,7 +58,7 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="flex items-center justify-center mb-12"
         >
-          <span className="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-gray-400 text-xs sm:text-sm text-center">
+          <span className="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-gray-400 text-sm">
             Final-year Computer Science student at TU Dublin.
           </span>
         </motion.div>

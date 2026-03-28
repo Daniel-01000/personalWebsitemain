@@ -47,7 +47,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-gray-400 text-lg sm:text-2xl mb-4 leading-relaxed"
+          className="text-gray-400 text-xl sm:text-2xl mb-4"
         >
           Founder of <span className="text-white font-medium">MediaConnectStudios</span> · Building <span className="text-primary-400 font-medium">ClientIn</span>
         </motion.p>
@@ -58,7 +58,7 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="flex items-center justify-center mb-12"
         >
-          <span className="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-gray-400 text-xs sm:text-sm text-center">
+          <span className="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-gray-400 text-sm">
             Final-year Computer Science student at TU Dublin.
           </span>
         </motion.div>
