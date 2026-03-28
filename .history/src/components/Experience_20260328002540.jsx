@@ -34,9 +34,9 @@ const Experience = () => {
       brands: [
         'Paul Sheeran Jewellers',
         'Louis Copeland',
-        'Bewleys Café',
         'Stable of Ireland',
         'Rock Salt Café',
+        'Bewleys Café',
         '& more',
       ],
     },
