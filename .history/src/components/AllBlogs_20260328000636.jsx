@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { blogPosts } from './blogData';
 
 const AllBlogs = () => {
-	const [activeCategory, setActiveCategory] = useState('All');
+	const [activeCategory, setActiveCategory] = useState('all');
 	const [selectedPost, setSelectedPost] = useState(null);
 	const navigate = useNavigate();
 
@@ -16,7 +16,7 @@ const AllBlogs = () => {
 	const categories = ['All', 'Product', 'Startups', 'Learning', 'Engineering'];
 
 	const filteredPosts = blogPosts.filter((post) => {
-		const matchesCategory = activeCategory === 'All' || post.category === activeCategory;
+		const matchesCategory = activeCategory === 'all' || post.category === activeCategory;
 		return matchesCategory;
 	});
 

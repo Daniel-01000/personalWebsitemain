@@ -16,7 +16,7 @@ const AllBlogs = () => {
 	const categories = ['All', 'Product', 'Startups', 'Learning', 'Engineering'];
 
 	const filteredPosts = blogPosts.filter((post) => {
-		const matchesCategory = activeCategory === 'All' || post.category === activeCategory;
+		const matchesCategory = activeCategory === 'all' || post.category === activeCategory;
 		return matchesCategory;
 	});
 
